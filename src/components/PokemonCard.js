@@ -8,6 +8,7 @@ class PokemonCard extends Component {
         <p>{this.props.id}</p>
         <p>{this.props.name}</p>
         <p>Type {this.props.type}</p>
+        <p>Evolved from: {this.props.evolved_from}</p>
         <img src={this.props.image} alt={this.props.name} />
       </span>
     );

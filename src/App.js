@@ -55,8 +55,22 @@ class App extends Component {
           .then(response2 =>
             response2.json()
           )
-          .then(json2 =>
-          console.log(json2))
+          .then(json2 => {
+            if (json2.evolves_from_species != null) {
+              const{
+                evolves_from_species: {name: evolved_from}
+              } = json2;
+
+              this.setState((prevState, props) => {
+                const pokemons = [...prevState.pokemons];
+                pokemons[pokemon.id - 1] = { ...pokemon, name, image, type, evolved_from };
+                return {pokemons};
+              });
+            }
+
+          }
+
+        )
         })
     );
   }
